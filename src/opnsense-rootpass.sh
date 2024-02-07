@@ -26,16 +26,8 @@
 
 PASS1=$(mktemp /tmp/passwd.XXXXXX)
 PASS2=$(mktemp /tmp/passwd.XXXXXX)
-PASSIN=
+PASSIN="opnids" # Set default password custom
 PASSOK=
-
-while [ -z "${PASSIN}" ]; do
-	if ! dialog --backtitle "OPNsense Installer" --title "Set Password" --clear --insecure "${@}" \
-	    --passwordbox "Please select a password for the\nsystem management account (root):" 9 40 2> ${PASS1}; then
-	    exit 0
-	fi
-	PASSIN=$(cat ${PASS1})
-done
 
 while [ -z "${PASSOK}" ]; do
 	if ! dialog --backtitle "OPNsense Installer" --title "Set Password" --clear --insecure "${@}" \
